@@ -10,3 +10,5 @@ declare module '*.svg' {
 
   export default content
 }
+
+declare module 'react-linkedin-login-oauth2'

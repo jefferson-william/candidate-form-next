@@ -1,5 +1,6 @@
 import React from 'react'
+import Main from '~/pages/main'
 
-const InitialPage = () => <p>Hello!</p>
+const InitialPage = () => <Main />
 
 export default InitialPage
