@@ -10,7 +10,7 @@ import Layout from '~/components/Layout'
 import TabPanel from '~/components/TabPanel'
 import { Main } from '~/styles/pages/main'
 import { DataProps } from '~/types/data'
-import { LinkedinUserProps, LinkedinSuccessAuthorizationTokenProps } from '~/types/data/LinkedIn'
+import { LinkedinUserProps, LinkedinSuccessAuthorizationTokenProps } from '~/types/data/LinkedIn.d'
 
 const LinkedIn = dynamic<any>(() => import('react-linkedin-login-oauth2'), { ssr: false })
 
@@ -36,7 +36,11 @@ const Component: React.FC = () => {
 
   const lastPanel = useMemo(() => panelIndex === 2, [panelIndex])
 
-  const handleChange = useCallback((event: React.ChangeEvent<{}>, newValue: number) => setPanelIndex(newValue), [])
+  const handleChange = useCallback((event: React.ChangeEvent<{}>, newValue: number) => {
+    setPanelIndex(newValue)
+
+    return event
+  }, [])
 
   const handleBack = useCallback(() => setPanelIndex(panelIndex - 1), [panelIndex])
 
