@@ -25,4 +25,7 @@ export default createGlobalStyle`
     display: flex;
     flex-direction: column;
   }
+  html body {
+    background-color: #eee;
+  }
 `
