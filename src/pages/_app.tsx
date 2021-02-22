@@ -1,11 +1,11 @@
 import { FC, useEffect } from 'react'
+import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { ThemeProvider } from '@material-ui/core/styles'
 import wrapperStore from '~/store'
 import theme from '~/styles/theme'
-import { MyAppProps } from '~/types/config/App'
 
-const MyApp: FC<MyAppProps> = ({ Component, pageProps, router }) => {
+const MyApp: FC<AppProps> = ({ Component, pageProps, router }) => {
   useEffect(() => {
     const jssStyles = document.querySelector('#jss-server-side')
 
