@@ -1,4 +1,5 @@
 export interface AddInformationFieldsProps {
+  defaultValues: string[]
   list: number[]
   name: string
   text: string

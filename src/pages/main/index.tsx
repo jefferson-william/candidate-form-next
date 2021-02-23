@@ -1,25 +1,27 @@
 import React, { useCallback, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useDispatch, useSelector } from 'react-redux'
 import dynamic from 'next/dynamic'
 import { Button, Card, FormControl, Input, InputLabel, Tab, Tabs, Typography } from '@material-ui/core'
 import { useTheme } from '@material-ui/core/styles'
-import axios from 'axios'
 import linkedinImage from '~/assets/images/linkedin.png'
 import AddInformationFields from '~/components/AddInformationFields'
 import Layout from '~/components/Layout'
 import TabPanel from '~/components/TabPanel'
+import * as CandidateActions from '~/store/Candidate/actions'
 import { Main } from '~/styles/pages/main'
 import { DataProps } from '~/types/data'
-import { LinkedinUserProps, LinkedinSuccessAuthorizationTokenProps } from '~/types/data/LinkedIn.d'
+import { LinkedinSuccessAuthorizationTokenProps } from '~/types/data/LinkedIn.d'
+import States from '~/types/store/rootStates'
 
 const LinkedIn = dynamic<any>(() => import('react-linkedin-login-oauth2'), { ssr: false })
 
 const Component: React.FC = () => {
-  const [linkedinAuthorizationToken, setLinkedinAuthorizationToken] = useState<string>('')
-  const [linkedinUserData, setLinkedinUserData] = useState<LinkedinUserProps | object>({})
+  const dispatch = useDispatch()
+  const [, setLinkedinAuthorizationToken] = useState<string>('')
   const [knowledgeList, setKnowledgeList] = useState<number[]>([0])
   const [whereDidYouWorkList, setWhereDidYouWorkList] = useState<number[]>([0])
-  const [data, setData] = useState<Partial<DataProps>>({})
+  const formData = useSelector<States, DataProps>((state) => state.Candidate.formData)
   const [panelIndex, setPanelIndex] = useState<number>(0)
   const theme = useTheme()
   const { register, handleSubmit } = useForm()
@@ -45,30 +47,23 @@ const Component: React.FC = () => {
   const handleBack = useCallback(() => setPanelIndex(panelIndex - 1), [panelIndex])
 
   const onSubmit = useCallback(
-    (values: Partial<DataProps>) => {
+    (values: DataProps) => {
       const canMoveForward = !lastPanel
 
       if (canMoveForward) {
         setPanelIndex(panelIndex + 1)
       }
 
-      setData(Object.assign(data, values))
+      dispatch(CandidateActions.setFormData({ formData: { ...formData, ...values } }))
     },
-    [lastPanel, panelIndex, data]
+    [lastPanel, panelIndex, formData]
   )
 
-  const handleLinkedinSuccess = useCallback(
-    async ({ code }: LinkedinSuccessAuthorizationTokenProps) => {
-      setLinkedinAuthorizationToken(code)
+  const handleLinkedinSuccess = useCallback(async ({ code }: LinkedinSuccessAuthorizationTokenProps) => {
+    setLinkedinAuthorizationToken(code)
 
-      const response = await axios.post<LinkedinUserProps>(`${process.env.NEXT_PUBLIC_URL}/api/linkedin/callback`, {
-        code,
-      })
-
-      setLinkedinUserData(response.data)
-    },
-    [linkedinAuthorizationToken, linkedinUserData]
-  )
+    dispatch(CandidateActions.linkedinDataRequest(code))
+  }, [])
 
   const handleLinkedinFailure = useCallback(() => setLinkedinAuthorizationToken(''), [])
 
@@ -101,17 +96,30 @@ const Component: React.FC = () => {
             <Card className="main__card">
               <FormControl className="main__form-control" required>
                 <InputLabel htmlFor="name">Nome completo</InputLabel>
-                <Input autoFocus id="name" name="name" inputRef={register({ required: true })} />
+                <Input
+                  autoFocus
+                  defaultValue={formData.name}
+                  id="name"
+                  name="name"
+                  inputRef={register({ required: true })}
+                />
               </FormControl>
               <FormControl className="main__form-control" required>
                 <InputLabel htmlFor="email">E-mail</InputLabel>
-                <Input type="email" id="email" name="email" inputRef={register({ required: true })} />
+                <Input
+                  type="email"
+                  defaultValue={formData.email}
+                  id="email"
+                  name="email"
+                  inputRef={register({ required: true })}
+                />
               </FormControl>
             </Card>
           </TabPanel>
           <TabPanel className="main__tab-panel" value={panelIndex} index={1} dir={theme.direction}>
             <Card className="main__card">
               <AddInformationFields
+                defaultValues={formData.whereDidYouWork}
                 list={whereDidYouWorkList}
                 setList={setWhereDidYouWorkList}
                 name="whereDidYouWork"
@@ -124,6 +132,7 @@ const Component: React.FC = () => {
           <TabPanel className="main__tab-panel" value={panelIndex} index={2} dir={theme.direction}>
             <Card className="main__card">
               <AddInformationFields
+                defaultValues={formData.knowledge}
                 list={knowledgeList}
                 setList={setKnowledgeList}
                 name="knowledge"

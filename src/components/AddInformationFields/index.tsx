@@ -4,6 +4,7 @@ import { Add, Close } from '@material-ui/icons'
 import { AddInformationFieldsProps } from '~/types/components/AddInformationFields'
 
 const AddInformationFields: React.FC<AddInformationFieldsProps> = ({
+  defaultValues,
   list,
   name,
   text,
@@ -25,6 +26,7 @@ const AddInformationFields: React.FC<AddInformationFieldsProps> = ({
         <FormControl key={index} className={formControlClass} required>
           <InputLabel htmlFor={`${name}${index}`}>{text}</InputLabel>
           <Input
+            value={defaultValues[index]}
             id={`${name}${index}`}
             name={`${name}[${index}]`}
             inputRef={register({ required: true })}
