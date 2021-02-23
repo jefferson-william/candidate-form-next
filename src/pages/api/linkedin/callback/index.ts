@@ -65,7 +65,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
       email,
     }
 
-    response.status(200).json({ data })
+    response.status(200).json(data)
   } catch (error) {
     response.status(500).json({ message: error.message })
   }

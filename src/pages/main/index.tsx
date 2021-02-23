@@ -54,7 +54,7 @@ const Component: React.FC = () => {
         setPanelIndex(panelIndex + 1)
       }
 
-      dispatch(CandidateActions.setFormData({ formData: { ...formData, ...values } }))
+      dispatch(CandidateActions.setFormData({ ...formData, ...values }))
     },
     [lastPanel, panelIndex, formData]
   )
