@@ -1,7 +1,7 @@
-import INITIAL_STATE_AUTH from '~/store/Auth/state'
+import INITIAL_STATE_CANDIDATE from '~/store/Candidate/state'
 
 const rootStates = {
-  Auth: INITIAL_STATE_AUTH,
+  Candidate: INITIAL_STATE_CANDIDATE,
 }
 
 export default rootStates

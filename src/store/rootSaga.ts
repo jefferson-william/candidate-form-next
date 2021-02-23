@@ -1,6 +1,6 @@
 import { all } from 'redux-saga/effects'
-import Auth from '~/store/Auth/sagas'
+import Candidate from '~/store/Candidate/sagas'
 
 export default function* rootSaga() {
-  return yield all([Auth])
+  return yield all([Candidate])
 }

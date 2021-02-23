@@ -5,3 +5,7 @@
 ### Validação
 
 - Liste onde e como validar.
+
+### Referências
+
+- Liste as referências.

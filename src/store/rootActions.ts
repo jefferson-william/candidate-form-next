@@ -1,3 +1,3 @@
-import * as Auth from '~/store/Auth/actions'
+import * as Candidate from '~/store/Candidate/actions'
 
-export const AuthAction = Auth
+export const CandidateAction = Candidate

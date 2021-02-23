@@ -1,15 +1,15 @@
 import { produce } from 'immer'
 import { Reducer } from 'redux'
-import { INITIAL_STATE } from '~/store/Auth/state'
-import TYPES from '~/store/Auth/types'
+import { INITIAL_STATE } from '~/store/Candidate/state'
+import TYPES from '~/store/Candidate/types'
 import Action from '~/types/lib/typesafe-actions'
-import State from '~/types/store/Auth/state'
+import State from '~/types/store/Candidate/state'
 
 const reducer: Reducer<State, Action<State>> = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case TYPES.SET_IS_LOGGED:
+    case TYPES.SET_FORM_DATA:
       return produce(state, (draft: State) => {
-        draft.isLogged = action.payload.isLogged
+        draft.formData = action.payload.formData
       })
 
     default:

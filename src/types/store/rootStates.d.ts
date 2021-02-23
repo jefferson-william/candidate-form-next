@@ -1,5 +1,5 @@
-import AuthState from '~/types/store/Auth/state'
+import CandidateState from '~/types/store/Candidate/state'
 
 export default interface States {
-  Auth: AuthState
+  Candidate: CandidateState
 }
