@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import dynamic from 'next/dynamic'
-import { Avatar, Button, Card, FormControl, Input, InputLabel, Tab, Tabs, Typography } from '@material-ui/core'
+import { Avatar, Button, Card, Tab, Tabs, TextField, Typography } from '@material-ui/core'
 import { useTheme } from '@material-ui/core/styles'
 import linkedinImage from '~/assets/images/linkedin.png'
 import AddInformationFields from '~/components/AddInformationFields'
@@ -129,26 +129,27 @@ const Component: React.FC = () => {
           <TabPanel className="main__tab-panel" value={formData.panelIndex} index={0} dir={theme.direction}>
             <Card className="main__card">
               <Avatar className="main__avatar" alt="Foto do usuário" src={formData.picture} />
-              <FormControl className="main__form-control" required>
-                <InputLabel htmlFor="fullName">Nome completo</InputLabel>
-                <Input
-                  autoFocus
-                  defaultValue={formData.fullName}
-                  id="fullName"
-                  name="fullName"
-                  inputRef={register({ required: true })}
-                />
-              </FormControl>
-              <FormControl className="main__form-control" required>
-                <InputLabel htmlFor="email">E-mail</InputLabel>
-                <Input
-                  type="email"
-                  defaultValue={formData.email}
-                  id="email"
-                  name="email"
-                  inputRef={register({ required: true })}
-                />
-              </FormControl>
+              <TextField
+                id="fullName"
+                name="fullName"
+                label="Nome completo"
+                className="main__form-control"
+                defaultValue={formData.fullName}
+                inputRef={register({ required: true })}
+                InputLabelProps={{ shrink: true }}
+                required
+              />
+              <TextField
+                id="email"
+                name="email"
+                type="email"
+                label="E-mail"
+                className="main__form-control"
+                defaultValue={formData.email}
+                inputRef={register({ required: true })}
+                InputLabelProps={{ shrink: true }}
+                required
+              />
             </Card>
           </TabPanel>
           <TabPanel className="main__tab-panel" value={formData.panelIndex} index={1} dir={theme.direction}>
