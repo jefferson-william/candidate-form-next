@@ -235,7 +235,15 @@ Tivemos problemas ao tentar usar um único mock para o axios. Então se isso aco
 - Use o `moxios` para quando estiver testando UI e renderizações que dependem de uma request;
 - `axios-mock-adapter` para axios dentro do Saga.
 
+### LightHouse
+
+```bash
+yarn global add lighthouse
+lighthouse http://localhost:3000 --budget-path=./budget.json --chrome-flags="--headless" --view
+```
+
 ### Referências
 
 - https://create-react-app.dev/docs/getting-started/
 - https://nextjs.org/learn/basics/getting-started
+- https://web.dev/use-lighthouse-for-performance-budgets

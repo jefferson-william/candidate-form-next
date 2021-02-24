@@ -31,3 +31,8 @@ package-lock.json
 
 # File Explorer files
 .directory
+
+# lighthouse
+**/*.devtoolslog.json
+**/*.report.html
+**/*.trace.json
