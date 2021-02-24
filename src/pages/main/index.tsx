@@ -67,7 +67,7 @@ const Component: React.FC = () => {
     (values: DataProps) => {
       const canMoveForward = !lastPanel
 
-      dispatch(CandidateActions.setFormData({ ...formData, ...values }))
+      dispatch(CandidateActions.setFormData({ ...formData, ...values, knowledgeList, whereDidYouWorkList }))
 
       if (canMoveForward) {
         handleNext()
