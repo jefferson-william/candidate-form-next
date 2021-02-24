@@ -24,7 +24,9 @@ const AddInformationFields: React.FC<AddInformationFieldsProps> = ({
     <>
       {list.map((index) => (
         <FormControl key={index} className={formControlClass} required>
-          <InputLabel htmlFor={`${name}${index}`}>{text}</InputLabel>
+          <InputLabel htmlFor={`${name}${index}`} shrink>
+            {text}
+          </InputLabel>
           <Input
             value={defaultValues[index]}
             id={`${name}${index}`}
