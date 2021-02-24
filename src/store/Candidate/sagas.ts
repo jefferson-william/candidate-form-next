@@ -1,10 +1,10 @@
 import axios, { AxiosResponse } from 'axios'
-import { call, put, all, takeLatest } from 'redux-saga/effects'
-import { setFormData } from '~/store/Candidate/actions'
-import INITIAL_STATE from '~/store/Candidate/state'
+import { call, put, all, takeLatest, select } from 'redux-saga/effects'
+import * as CandidateActions from '~/store/Candidate/actions'
 import TYPES from '~/store/Candidate/types'
 import { DataProps } from '~/types/data'
 import Action from '~/types/lib/typesafe-actions'
+import States from '~/types/store/rootStates'
 
 export function* linkedinDataRequest({ payload: code }: Action<string>) {
   try {
@@ -16,9 +16,13 @@ export function* linkedinDataRequest({ payload: code }: Action<string>) {
       }
     )
 
-    yield put(setFormData(response.data))
+    const formData = yield select((state: States) => state.Candidate.formData)
+
+    yield put(CandidateActions.setFormData({ ...formData, ...response.data }))
+
+    yield put(CandidateActions.setObtainedUserDataFromLinkedin(true))
   } catch (exception) {
-    yield put(setFormData(INITIAL_STATE.formData))
+    yield put(CandidateActions.setObtainedUserDataFromLinkedin(false))
   }
 }
 

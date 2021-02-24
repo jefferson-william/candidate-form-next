@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import axios from 'axios'
+import { DataProps } from '~/types/data'
 import {
   LinkedinSuccessAccessTokenProps,
   LinkedinRetrieveMePictureProps,
@@ -7,7 +8,7 @@ import {
   LinkedinMeEmailProps,
 } from '~/types/data/LinkedIn'
 
-export default async function handler(request: NextApiRequest, response: NextApiResponse) {
+export default async function handler(request: NextApiRequest, response: NextApiResponse<Partial<DataProps> | object>) {
   if (request.method !== 'POST') {
     response.status(500)
 
@@ -58,8 +59,6 @@ export default async function handler(request: NextApiRequest, response: NextApi
     const email = responseRetrieveMeEmail.data.elements[0]['handle~'].emailAddress
 
     const data = {
-      firstName,
-      lastName,
       fullName,
       picture,
       email,

@@ -12,6 +12,11 @@ const reducer: Reducer<State, Action<State>> = (state = INITIAL_STATE, action) =
         draft.formData = action.payload.formData
       })
 
+    case TYPES.SET_OBTAINED_USER_DATA_FROM_LINKEDIN:
+      return produce(state, (draft: State) => {
+        draft.obtainedUserDataFromLinkedin = action.payload.obtainedUserDataFromLinkedin
+      })
+
     default:
       return state
   }
