@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import { Experiment, Variant } from 'react-optimize'
 import { useDispatch, useSelector } from 'react-redux'
 import dynamic from 'next/dynamic'
+import Image from 'next/image'
 import { Avatar, Button, Card, Tab, Tabs, TextField, Typography } from '@material-ui/core'
 import { useTheme } from '@material-ui/core/styles'
 import linkedinImage from '~/assets/images/linkedin.png'
@@ -128,13 +129,24 @@ const Component: React.FC = () => {
             redirectUri={`${process.env.NEXT_PUBLIC_URL}/linkedin`}
             scope={process.env.NEXT_PUBLIC_LINKEDIN_CLIENT_SCOPE}
           >
-            <img src={linkedinImage} alt="Log in with Linked In" style={{ maxWidth: '180px' }} />
+            <Image
+              src={linkedinImage}
+              alt="Log in with Linked In"
+              width="180"
+              height="33"
+              className="main__linkedin-image"
+            />
           </LinkedIn>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <TabPanel className="main__tab-panel" value={formData.panelIndex} index={0} dir={theme.direction}>
             <Card className="main__card">
-              <Avatar className="main__avatar" alt="Foto do usuário" src={formData.picture} />
+              <Avatar
+                className="main__avatar"
+                alt="Foto do usuário"
+                src={formData.picture}
+                imgProps={{ width: 40, height: 40 }}
+              />
               <TextField
                 id="fullName"
                 name="fullName"

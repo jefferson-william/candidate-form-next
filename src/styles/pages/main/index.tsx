@@ -31,10 +31,18 @@ export const Main = styled(Container)`
       display: flex;
       flex-direction: column;
       align-items: center;
+      height: 73px;
       margin-bottom: 48px;
     }
     &__linkedin-text {
       margin-bottom: 16px;
+    }
+    &__linkedin-image {
+      max-width: 180px;
+    }
+    &__linkedin-loader {
+      width: 180px;
+      height: 33px;
     }
     &__avatar {
       margin: 0 auto;

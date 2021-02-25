@@ -14,6 +14,7 @@ export default createGlobalStyle`
   }
   body {
     font-size: 14px;
+    font-display: swap;
   }
   html,
   body,
