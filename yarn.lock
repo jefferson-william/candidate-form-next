@@ -13513,6 +13513,11 @@ react-linkedin-login-oauth2@1.0.9:
   dependencies:
     query-string "~5.1.1"
 
+react-optimize@2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/react-optimize/-/react-optimize-2.4.0.tgz#fcea0af3927223334dde256e18927f911ca227c8"
+  integrity sha512-QK+z8wwOGKUVk6zC2q6l2H67V/bgMleCdm+xpefWQu9F5363LX0nh0ZGcewE8miUWF1xk5U1jWWKjhiVv8lb7g==
+
 react-redux@7.2.2:
   version "7.2.2"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-7.2.2.tgz#03862e803a30b6b9ef8582dadcc810947f74b736"
