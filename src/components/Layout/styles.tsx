@@ -6,4 +6,9 @@ export const Layout = styled.div`
   justify-content: flex-start;
   align-items: center;
   height: 100%;
+  .layout {
+    &__header-loader {
+      height: 66px;
+    }
+  }
 `
