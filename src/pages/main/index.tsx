@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { Experiment, Variant } from 'react-optimize'
 import { useDispatch, useSelector } from 'react-redux'
 import dynamic from 'next/dynamic'
 import { Avatar, Button, Card, Tab, Tabs, TextField, Typography } from '@material-ui/core'
@@ -8,6 +9,7 @@ import linkedinImage from '~/assets/images/linkedin.png'
 import AddInformationFields from '~/components/AddInformationFields'
 import Layout from '~/components/Layout'
 import TabPanel from '~/components/TabPanel'
+import { LINKEDIN_IS_SHOW_VARIATION, OPTIMIZE_EXPERIMENTS } from '~/constants/experiments'
 import * as CandidateActions from '~/store/Candidate/actions'
 import { Main } from '~/styles/pages/main'
 import { DataProps } from '~/types/data'
@@ -111,20 +113,24 @@ const Component: React.FC = () => {
           <Tab label="Onde já trabalhou" {...a11yProps(1)} />
           <Tab label="Conhecimentos" {...a11yProps(2)} />
         </Tabs>
-        <div className="main__linkedin-area">
-          <Typography className="main__linkedin-text" variant="caption">
-            Clique para preencher automaticamente
-          </Typography>
-          <LinkedIn
-            clientId={process.env.NEXT_PUBLIC_LINKEDIN_CLIENT_ID}
-            onSuccess={handleLinkedinSuccess}
-            onFailure={handleLinkedinFailure}
-            redirectUri={`${process.env.NEXT_PUBLIC_URL}/linkedin`}
-            scope={process.env.NEXT_PUBLIC_LINKEDIN_CLIENT_SCOPE}
-          >
-            <img src={linkedinImage} alt="Log in with Linked In" style={{ maxWidth: '180px' }} />
-          </LinkedIn>
-        </div>
+        <Experiment id={OPTIMIZE_EXPERIMENTS.LINKEDIN_IS_SHOW}>
+          <Variant id={LINKEDIN_IS_SHOW_VARIATION.Test}>
+            <div className="main__linkedin-area">
+              <Typography className="main__linkedin-text" variant="caption">
+                Clique para preencher automaticamente
+              </Typography>
+              <LinkedIn
+                clientId={process.env.NEXT_PUBLIC_LINKEDIN_CLIENT_ID}
+                onSuccess={handleLinkedinSuccess}
+                onFailure={handleLinkedinFailure}
+                redirectUri={`${process.env.NEXT_PUBLIC_URL}/linkedin`}
+                scope={process.env.NEXT_PUBLIC_LINKEDIN_CLIENT_SCOPE}
+              >
+                <img src={linkedinImage} alt="Log in with Linked In" style={{ maxWidth: '180px' }} />
+              </LinkedIn>
+            </div>
+          </Variant>
+        </Experiment>
         <form onSubmit={handleSubmit(onSubmit)}>
           <TabPanel className="main__tab-panel" value={formData.panelIndex} index={0} dir={theme.direction}>
             <Card className="main__card">

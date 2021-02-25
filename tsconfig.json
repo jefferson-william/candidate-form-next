@@ -4,7 +4,11 @@
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "jsx": "preserve",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
@@ -22,9 +26,17 @@
     "isolatedModules": true,
     "noFallthroughCasesInSwitch": true
   },
-  "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
   "linterOptions": {
-    "exclude": ["./public/serviceWorker.ts"]
+    "exclude": [
+      "./public/serviceWorker.ts"
+    ]
   }
 }
