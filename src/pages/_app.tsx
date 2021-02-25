@@ -7,6 +7,7 @@ import { ThemeProvider } from '@material-ui/core/styles'
 import { PersistGate } from 'redux-persist/integration/react'
 import wrapperStore from '~/store'
 import theme from '~/styles/theme'
+import LoadFont from '~/utils/font-load'
 
 const MyApp: FC<AppProps> = ({ Component, pageProps, router }) => {
   const store: any = useStore()
@@ -17,6 +18,9 @@ const MyApp: FC<AppProps> = ({ Component, pageProps, router }) => {
     if (jssStyles) {
       jssStyles.parentElement?.removeChild(jssStyles)
     }
+
+    LoadFont('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap', 'Roboto')
+    LoadFont('https://fonts.googleapis.com/icon?family=Material+Icons', 'Material Icons')
   }, [])
 
   return (
