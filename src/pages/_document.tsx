@@ -41,24 +41,28 @@ export default class MyDocument extends Document {
             href="https://fonts.gstatic.com/s/materialicons/v78/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2"
             as="font"
             type="font/woff2"
+            crossOrigin=""
           />
           <link
             rel="preload"
             href="https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2"
             as="font"
             type="font/woff2"
+            crossOrigin=""
           />
           <link
             rel="preload"
             href="https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBBc4AMP6lQ.woff2"
             as="font"
             type="font/woff2"
+            crossOrigin=""
           />
           <link
             rel="preload"
             href="https://fonts.gstatic.com/s/materialicons/v78/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2"
             as="font"
             type="font/woff2"
+            crossOrigin=""
           />
           <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`} />
           <script async src={`https://www.googleoptimize.com/optimize.js?id=${process.env.NEXT_PUBLIC_OPTIMIZE_ID}`} />
