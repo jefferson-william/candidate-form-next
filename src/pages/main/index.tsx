@@ -134,7 +134,12 @@ const Component: React.FC = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <TabPanel className="main__tab-panel" value={formData.panelIndex} index={0} dir={theme.direction}>
             <Card className="main__card">
-              <Avatar className="main__avatar" alt="Foto do usuário" src={formData.picture} />
+              <Avatar
+                className="main__avatar"
+                alt="Foto do usuário"
+                src={formData.picture}
+                imgProps={{ width: 40, height: 40 }}
+              />
               <TextField
                 id="fullName"
                 name="fullName"
