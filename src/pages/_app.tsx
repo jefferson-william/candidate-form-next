@@ -20,7 +20,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps, router }) => {
     }
 
     LoadFont('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap', 'Roboto')
-    LoadFont('https://fonts.googleapis.com/icon?family=Material+Icons', 'Material Icons')
+    LoadFont('https://fonts.googleapis.com/icon?family=Material+Icons&display=swap', 'Material Icons')
   }, [])
 
   return (
