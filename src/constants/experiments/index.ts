@@ -3,6 +3,6 @@ export const OPTIMIZE_EXPERIMENTS = Object.freeze({
 })
 
 export const LINKEDIN_IS_SHOW_VARIATION = Object.freeze({
-  Original: 'Original',
-  Test: 'Test',
+  Original: '0',
+  Test: '1',
 })

@@ -108,29 +108,29 @@ const Component: React.FC = () => {
   return (
     <Layout>
       <Main maxWidth="sm">
-        <Tabs className="main__tabs" value={formData.panelIndex} onChange={handleChange} aria-label="Perguntas">
-          <Tab label="Dados básicos" {...a11yProps(0)} />
-          <Tab label="Onde já trabalhou" {...a11yProps(1)} />
-          <Tab label="Conhecimentos" {...a11yProps(2)} />
-        </Tabs>
         <Experiment id={OPTIMIZE_EXPERIMENTS.LINKEDIN_IS_SHOW}>
           <Variant id={LINKEDIN_IS_SHOW_VARIATION.Test}>
-            <div className="main__linkedin-area">
-              <Typography className="main__linkedin-text" variant="caption">
-                Clique para preencher automaticamente
-              </Typography>
-              <LinkedIn
-                clientId={process.env.NEXT_PUBLIC_LINKEDIN_CLIENT_ID}
-                onSuccess={handleLinkedinSuccess}
-                onFailure={handleLinkedinFailure}
-                redirectUri={`${process.env.NEXT_PUBLIC_URL}/linkedin`}
-                scope={process.env.NEXT_PUBLIC_LINKEDIN_CLIENT_SCOPE}
-              >
-                <img src={linkedinImage} alt="Log in with Linked In" style={{ maxWidth: '180px' }} />
-              </LinkedIn>
-            </div>
+            <Tabs className="main__tabs" value={formData.panelIndex} onChange={handleChange} aria-label="Perguntas">
+              <Tab label="Dados básicos" {...a11yProps(0)} />
+              <Tab label="Onde já trabalhou" {...a11yProps(1)} />
+              <Tab label="Conhecimentos" {...a11yProps(2)} />
+            </Tabs>
           </Variant>
         </Experiment>
+        <div className="main__linkedin-area">
+          <Typography className="main__linkedin-text" variant="caption">
+            Clique para preencher automaticamente
+          </Typography>
+          <LinkedIn
+            clientId={process.env.NEXT_PUBLIC_LINKEDIN_CLIENT_ID}
+            onSuccess={handleLinkedinSuccess}
+            onFailure={handleLinkedinFailure}
+            redirectUri={`${process.env.NEXT_PUBLIC_URL}/linkedin`}
+            scope={process.env.NEXT_PUBLIC_LINKEDIN_CLIENT_SCOPE}
+          >
+            <img src={linkedinImage} alt="Log in with Linked In" style={{ maxWidth: '180px' }} />
+          </LinkedIn>
+        </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <TabPanel className="main__tab-panel" value={formData.panelIndex} index={0} dir={theme.direction}>
             <Card className="main__card">
