@@ -128,7 +128,13 @@ const Component: React.FC = () => {
             redirectUri={`${process.env.NEXT_PUBLIC_URL}/linkedin`}
             scope={process.env.NEXT_PUBLIC_LINKEDIN_CLIENT_SCOPE}
           >
-            <img src={linkedinImage} alt="Log in with Linked In" style={{ maxWidth: '180px' }} />
+            <img
+              src={linkedinImage}
+              alt="Log in with Linked In"
+              width="180"
+              height="33"
+              style={{ maxWidth: '180px' }}
+            />
           </LinkedIn>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
