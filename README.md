@@ -26,7 +26,17 @@ yarn dev
 # yarn build ; yarn start
 ```
 
+Ferramentas e integração com terceiros podem não funcionar sem as variáveis de ambiente preenchidas ao rodar localmente.
+
+Caso tenha as variáveis de ambiente, preencha o arquivo após executar `cp .env.development .env.local`.
+
+Para evitar isso, veja o projeto em produção.
+
+- https://candidate-form-next.vercel.app
+
 ### Teste AB
+
+O teste ab foi aplicado as abas. Elas podem exibir ou não de acordo com a variação do teste. Para testar, [acesse o projeto](https://candidate-form-next.vercel.app) em abas anônimas repetidas vezes até identificar que o teste variou.
 
 Criei contas para o Google Analytics, TagManager e **Optimize**.
 
