@@ -36,6 +36,9 @@ export const Main = styled(Container)`
     &__linkedin-text {
       margin-bottom: 16px;
     }
+    &__linkedin-image {
+      max-width: 180px;
+    }
     &__avatar {
       margin: 0 auto;
     }
