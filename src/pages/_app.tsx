@@ -23,6 +23,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps, router }) => {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Formulário do Candidato | Intera" />
         <title>Formulário do Candidato | Intera</title>
       </Head>
       <ThemeProvider theme={theme}>
