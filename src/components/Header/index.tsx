@@ -6,7 +6,7 @@ import { Header } from './styles'
 const Component: React.FC = () => (
   <Header className="header" elevation={4}>
     <Container>
-      <img className="header__logo" src={Logo} alt="Logo Intera" />
+      <img className="header__logo" src={Logo} alt="Logo Intera" width="80" height="13" />
     </Container>
   </Header>
 )
