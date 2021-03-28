@@ -1,7 +1,7 @@
 import { render, waitFor, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import getStore from '~/__stubs__/test-utils/get-store'
-import Providers from '~/__stubs__/test-utils/Providers'
+import getStore from '~/__stubs__/utils/test-utils/get-store'
+import Providers from '~/__stubs__/utils/test-utils/Providers'
 import theme from '~/styles/theme'
 import { MyRenderOptions, MyRenderedOptions } from '~/types/__stubs__/test-utils'
 

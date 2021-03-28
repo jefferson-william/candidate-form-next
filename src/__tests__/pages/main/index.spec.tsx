@@ -1,4 +1,4 @@
-import { render, userEvent, act, RenderResult, screen, waitForElementToBeRemoved } from '~/__stubs__/test-utils'
+import { render, userEvent, act, RenderResult, screen, waitForElementToBeRemoved } from '~/__stubs__/utils/test-utils'
 import Main from '~/pages/main'
 import '~/__mocks__/nextRouter'
 
@@ -14,31 +14,9 @@ function getAllWhereDidYouWorkInput() {
   return screen.getAllByRole('textbox', { name: 'Onde já trabalhou?' })
 }
 
-function getAllByRemoveWhereDidWorkIconButton() {
-  return screen.getAllByRole('button', { name: 'Remover' })
-}
-
 function populateBasicDataForm() {
   userEvent.type(screen.getByRole('textbox', { name: 'Nome completo' }), 'Steve Jobs')
   userEvent.type(screen.getByRole('textbox', { name: 'E-mail' }), 'steve.jobs@email.com')
-}
-
-function testAddAndRemoveFieldsOfWhereDidYouWorkForm() {
-  userEvent.type(getAllWhereDidYouWorkInput()[0], 'Remessa Online')
-
-  clickWhereDidWorkAddButton()
-
-  userEvent.type(getAllWhereDidYouWorkInput()[1], 'Google')
-
-  userEvent.click(getAllByRemoveWhereDidWorkIconButton()[0])
-
-  clickWhereDidWorkAddButton()
-
-  userEvent.type(getAllWhereDidYouWorkInput()[1], 'Microsoft')
-
-  userEvent.click(getAllByRemoveWhereDidWorkIconButton()[1])
-
-  userEvent.click(getAllByRemoveWhereDidWorkIconButton()[0])
 }
 
 function populateWhereDidYouWorkForm() {
@@ -67,8 +45,6 @@ describe('pages/main', () => {
       clickNextButton()
 
       await screen.findByRole('textbox', { name: 'Onde já trabalhou?' })
-
-      testAddAndRemoveFieldsOfWhereDidYouWorkForm()
 
       populateWhereDidYouWorkForm()
 

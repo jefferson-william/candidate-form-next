@@ -4,6 +4,6 @@ export interface AddInformationFieldsProps {
   name: string
   text: string
   register: any
-  setList: any
+  setList: React.Dispatch<React.SetStateAction<number[]>>
   formControlClass?: string
 }
