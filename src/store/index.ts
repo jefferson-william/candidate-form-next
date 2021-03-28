@@ -5,11 +5,12 @@ import { PersistConfig, persistStore } from 'redux-persist'
 import createSagaMiddleware from 'redux-saga'
 import rootReducer from '~/store/rootReducer'
 import rootSaga from '~/store/rootSaga'
+import rootStates from '~/store/rootStates'
 import States from '~/types/store/rootStates'
 
 const isClient = typeof window !== 'undefined'
 
-export const store = () => {
+export const store = (initialState: States = rootStates) => {
   let myStore
 
   const sagaMiddleware = createSagaMiddleware()
@@ -26,12 +27,16 @@ export const store = () => {
       whitelist: ['Candidate'],
     }
 
-    myStore = createReduxStore<States, any, any, any>(persistReducer(persistConfig, rootReducer), middlewares)
+    myStore = createReduxStore<States, any, any, any>(
+      persistReducer(persistConfig, rootReducer),
+      initialState,
+      middlewares
+    )
 
     // eslint-disable-next-line no-underscore-dangle
     myStore.__PERSISTOR = persistStore(myStore) as any
   } else {
-    myStore = createReduxStore<States, any, any, any>(rootReducer, middlewares)
+    myStore = createReduxStore<States, any, any, States>(rootReducer, middlewares)
   }
 
   myStore.sagaTask = sagaMiddleware.run(rootSaga)
@@ -39,6 +44,6 @@ export const store = () => {
   return myStore
 }
 
-const wrapperStore = createWrapper<States>(store, { debug: process.env.NODE_ENV === 'development' })
+const wrapperStore = createWrapper<States>(store as any, { debug: process.env.NODE_ENV === 'development' })
 
 export default wrapperStore
