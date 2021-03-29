@@ -1,48 +1,10 @@
 import AddInformationFieldsStub from '~/__stubs__/components/AddInformationFieldsStub'
-import { render, userEvent, act, RenderResult, screen, waitFor } from '~/__stubs__/utils/test-utils'
+import {
+  populateWhereDidYouWorkForm,
+  testAddAndRemoveFieldsOfWhereDidYouWorkForm,
+} from '~/__stubs__/components/AddInformationFieldsStub/actions'
+import { render, act, RenderResult } from '~/__stubs__/utils/test-utils'
 import getFormData from '~/utils/form/get-form-data'
-
-function clickWhereDidWorkAddButton() {
-  userEvent.click(screen.getAllByRole('button', { name: 'Adicionar' })[0])
-}
-
-function getAllWhereDidYouWorkInput() {
-  return screen.getAllByRole('textbox', { name: 'Onde já trabalhou?' })
-}
-
-function getAllByRemoveWhereDidWorkIconButton() {
-  return screen.getAllByRole('button', { name: 'Remover' })
-}
-
-async function testAddAndRemoveFieldsOfWhereDidYouWorkForm() {
-  userEvent.type(getAllWhereDidYouWorkInput()[0], 'Remessa Online')
-
-  clickWhereDidWorkAddButton()
-
-  await waitFor(() => expect(getAllWhereDidYouWorkInput()[1]).toBeInTheDocument())
-
-  userEvent.type(getAllWhereDidYouWorkInput()[1], 'Google')
-
-  userEvent.click(getAllByRemoveWhereDidWorkIconButton()[0])
-
-  clickWhereDidWorkAddButton()
-
-  userEvent.type(getAllWhereDidYouWorkInput()[1], 'Microsoft')
-
-  userEvent.click(getAllByRemoveWhereDidWorkIconButton()[1])
-
-  userEvent.type(getAllWhereDidYouWorkInput()[0], '')
-}
-
-async function populateWhereDidYouWorkForm() {
-  userEvent.type(getAllWhereDidYouWorkInput()[0], 'Amazon')
-
-  clickWhereDidWorkAddButton()
-
-  await waitFor(() => expect(getAllWhereDidYouWorkInput()[1]).toBeInTheDocument())
-
-  userEvent.type(getAllWhereDidYouWorkInput()[1], 'Yahoo')
-}
 
 describe('components/AddInformationFields', () => {
   let wrapper: RenderResult
