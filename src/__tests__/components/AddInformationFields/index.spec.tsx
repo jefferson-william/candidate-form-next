@@ -21,7 +21,7 @@ describe('components/AddInformationFields', () => {
     describe('when test behavior', () => {
       it('all interactions should work', async () => {
         await act(async () => {
-          await testAddAndRemoveFieldsOfWhereDidYouWorkForm()
+          await testAddAndRemoveFieldsOfWhereDidYouWorkForm(wrapper)
         })
       })
     })
@@ -29,7 +29,7 @@ describe('components/AddInformationFields', () => {
     describe('when fill in all fields correctly', () => {
       it('should return all the values filled in', async () => {
         await act(async () => {
-          await populateWhereDidYouWorkForm()
+          await populateWhereDidYouWorkForm(wrapper)
 
           expect(getFormData(wrapper.container.querySelector('form') as HTMLFormElement)).toMatchObject({
             'whereDidYouWork[0]': 'Amazon',

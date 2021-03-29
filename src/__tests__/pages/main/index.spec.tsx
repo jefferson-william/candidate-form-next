@@ -26,7 +26,7 @@ describe('pages/main', () => {
 
       await findByWhereDidYouWorkInput()
 
-      populateWhereDidYouWorkForm()
+      await populateWhereDidYouWorkForm(wrapper)
 
       clickNextButton()
 
