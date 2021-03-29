@@ -3,11 +3,11 @@ import {
   populateWhereDidYouWorkForm,
   testAddAndRemoveFieldsOfWhereDidYouWorkForm,
 } from '~/__stubs__/components/AddInformationFieldsStub/actions'
-import { render, act, RenderResult } from '~/__stubs__/utils/test-utils'
+import { render, act, MyRenderResult } from '~/__stubs__/utils/test-utils'
 import getFormData from '~/utils/form/get-form-data'
 
 describe('components/AddInformationFields', () => {
-  let wrapper: RenderResult
+  let wrapper: MyRenderResult
 
   describe('when not have default params', () => {
     beforeEach(async () => {

@@ -3,12 +3,12 @@ import {
   getAllWhereDidYouWorkInput,
 } from '~/__stubs__/components/AddInformationFieldsStub/selectors'
 import { clickNextButton, populateBasicDataForm, populateWhereDidYouWorkForm } from '~/__stubs__/pages/main/actions'
-import { render, act, RenderResult, screen, waitForElementToBeRemoved } from '~/__stubs__/utils/test-utils'
+import { render, act, MyRenderResult, screen, waitForElementToBeRemoved } from '~/__stubs__/utils/test-utils'
 import Main from '~/pages/main'
 import '~/__mocks__/nextRouter'
 
 describe('pages/main', () => {
-  let wrapper: RenderResult
+  let wrapper: MyRenderResult
 
   beforeEach(async () => {
     ;[wrapper] = await render(<Main />)
