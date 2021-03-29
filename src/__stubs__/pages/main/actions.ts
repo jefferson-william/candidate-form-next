@@ -1,5 +1,5 @@
+import { getAllWhereDidYouWorkInput } from '~/__stubs__/components/AddInformationFieldsStub/selectors'
 import { screen, userEvent } from '~/__stubs__/utils/test-utils'
-import { getAllWhereDidYouWorkInput } from './selectors'
 
 export function clickNextButton() {
   userEvent.click(screen.getByRole('button', { name: 'Próximo' }))

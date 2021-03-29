@@ -1,5 +1,8 @@
+import {
+  findByWhereDidYouWorkInput,
+  getAllWhereDidYouWorkInput,
+} from '~/__stubs__/components/AddInformationFieldsStub/selectors'
 import { clickNextButton, populateBasicDataForm, populateWhereDidYouWorkForm } from '~/__stubs__/pages/main/actions'
-import { getAllWhereDidYouWorkInput } from '~/__stubs__/pages/main/selectors'
 import { render, act, RenderResult, screen, waitForElementToBeRemoved } from '~/__stubs__/utils/test-utils'
 import Main from '~/pages/main'
 import '~/__mocks__/nextRouter'
@@ -21,7 +24,7 @@ describe('pages/main', () => {
 
       clickNextButton()
 
-      await screen.findByRole('textbox', { name: 'Onde já trabalhou?' })
+      await findByWhereDidYouWorkInput()
 
       populateWhereDidYouWorkForm()
 
