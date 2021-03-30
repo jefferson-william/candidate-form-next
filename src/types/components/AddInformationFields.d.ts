@@ -1,9 +1,12 @@
+import { FieldValues } from 'react-hook-form'
+import { DataProps } from '~/types/data'
+
 export interface AddInformationFieldsProps {
-  defaultValues: string[]
-  list: number[]
+  list: string[]
   name: string
   text: string
+  control: Control<FieldValues>
+  setList: any
   register: any
-  setList: React.Dispatch<React.SetStateAction<number[]>>
   formControlClass?: string
 }

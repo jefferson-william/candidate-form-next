@@ -11,7 +11,7 @@ describe('components/AddInformationFields', () => {
 
   describe('when not have default params', () => {
     beforeEach(async () => {
-      ;[wrapper] = await render(<AddInformationFieldsStub defaultValues={[]} defaultList={[0]} />)
+      ;[wrapper] = await render(<AddInformationFieldsStub list={['']} />)
     })
 
     it('should to match snapshot', () => {
@@ -42,9 +42,7 @@ describe('components/AddInformationFields', () => {
 
   describe('when have two default params', () => {
     beforeEach(async () => {
-      ;[wrapper] = await render(
-        <AddInformationFieldsStub defaultValues={['Google', 'Microsoft']} defaultList={[0, 1]} />
-      )
+      ;[wrapper] = await render(<AddInformationFieldsStub list={['Google', 'Microsoft']} />)
     })
 
     it('should to match snapshot', () => {

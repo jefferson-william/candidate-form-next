@@ -4,7 +4,5 @@ export interface DataProps {
   email: string
   whereDidYouWork: string[]
   knowledge: string[]
-  knowledgeList: number[]
-  whereDidYouWorkList: number[]
   panelIndex: number
 }

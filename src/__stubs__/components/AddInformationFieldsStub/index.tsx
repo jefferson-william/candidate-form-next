@@ -3,21 +3,20 @@ import { useForm } from 'react-hook-form'
 import AddInformationFields from '~/components/AddInformationFields'
 
 interface AddInformationFieldsStubProps {
-  defaultValues: string[]
-  defaultList: number[]
+  list: string[]
 }
 
-const AddInformationFieldsStub: FC<AddInformationFieldsStubProps> = ({ defaultList, defaultValues }) => {
-  const [list, setList] = useState<number[]>(defaultList)
-  const { register } = useForm()
+const AddInformationFieldsStub: FC<AddInformationFieldsStubProps> = ({ list }) => {
+  const [values, setList] = useState<string[]>(list)
+  const { register, control } = useForm()
 
   return (
     <form>
       <AddInformationFields
-        defaultValues={defaultValues}
-        list={list}
+        list={values}
         name="whereDidYouWork"
         text="Onde já trabalhou?"
+        control={control}
         register={register}
         setList={setList}
         formControlClass="main__form-control"
