@@ -209,7 +209,7 @@ const Component: React.FC = () => {
               Anterior
             </Button>
             <Button className="main__button" type="submit" variant="contained" color="primary">
-              {lastPanel ? 'Enviar' : 'Próximo'}
+              {formData.panelIndex === 2 ? 'Enviar' : 'Próximo'}
             </Button>
           </div>
         </form>
