@@ -1,16 +1,4 @@
-import { populateWhereDidYouWorkForm } from '~/__stubs__/components/AddInformationFieldsStub/actions'
-import {
-  findByWhereDidYouWorkInput,
-  getAllWhereDidYouWorkInput,
-} from '~/__stubs__/components/AddInformationFieldsStub/selectors'
-import {
-  clickNextButton,
-  clickSendButton,
-  populateBasicDataForm,
-  populateKnowledgeForm,
-} from '~/__stubs__/pages/main/actions'
-import { findByKnowledgeInput } from '~/__stubs__/pages/main/selectors'
-import { render, act, MyRenderResult, waitForElementToBeRemoved } from '~/__stubs__/utils/test-utils'
+import { render, act, MyRenderResult, waitForElementToBeRemoved, screen, userEvent } from '~/__stubs__/utils/test-utils'
 import Main from '~/pages/main'
 import '~/__mocks__/nextRouter'
 import { MyRenderedOptions } from '~/types/__stubs__/test-utils'
@@ -29,23 +17,36 @@ describe('pages/main', () => {
 
   it('should be able to perform the entire flow of filling out the form', async () => {
     await act(async () => {
-      populateBasicDataForm()
+      userEvent.type(screen.getByRole('textbox', { name: 'Nome completo' }), 'Steve Jobs')
+      userEvent.type(screen.getByRole('textbox', { name: 'E-mail' }), 'steve.jobs@email.com')
 
-      clickNextButton()
+      userEvent.click(screen.getByRole('button', { name: 'Próximo' }))
 
-      await findByWhereDidYouWorkInput()
+      await screen.findByRole('textbox', { name: 'Onde já trabalhou?' })
 
-      await populateWhereDidYouWorkForm(wrapper)
+      userEvent.type(screen.getAllByRole('textbox', { name: 'Onde já trabalhou?' })[0], 'Amazon')
 
-      clickNextButton()
+      userEvent.click(screen.getByRole('button', { name: 'Adicionar' }))
 
-      await waitForElementToBeRemoved(() => getAllWhereDidYouWorkInput()[0])
+      await wrapper.findByInputName('whereDidYouWork[1]')
 
-      await findByKnowledgeInput()
+      userEvent.type(screen.getAllByRole('textbox', { name: 'Onde já trabalhou?' })[1], 'Yahoo')
 
-      await populateKnowledgeForm(wrapper)
+      userEvent.click(screen.getByRole('button', { name: 'Próximo' }))
 
-      clickSendButton()
+      await waitForElementToBeRemoved(() => screen.getAllByRole('textbox', { name: 'Onde já trabalhou?' })[0])
+
+      await screen.findByRole('textbox', { name: 'Conhecimentos' })
+
+      userEvent.type(screen.getAllByRole('textbox', { name: 'Conhecimentos' })[0], 'NodeJS')
+
+      userEvent.click(screen.getByRole('button', { name: 'Adicionar' }))
+
+      await wrapper.findByInputName('knowledge[1]')
+
+      userEvent.type(screen.getAllByRole('textbox', { name: 'Conhecimentos' })[1], 'React')
+
+      userEvent.click(screen.getByRole('button', { name: 'Enviar' }))
     })
 
     expect(options.store.getState().Candidate.formData).toEqual({
