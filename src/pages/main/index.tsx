@@ -31,9 +31,6 @@ const Component: React.FC = () => {
     obtainedUserDataFromLinkedin: state.Candidate.obtainedUserDataFromLinkedin,
   }))
   const [, setLinkedinAuthorizationToken] = useState<string>('')
-  const [knowledgeList, setKnowledgeList] = useState<number[]>([...formData.knowledgeList])
-  const [whereDidYouWorkList, setWhereDidYouWorkList] = useState<number[]>([...formData.whereDidYouWorkList])
-  const [panelIndex, setPanelIndex] = useState<number>(formData.panelIndex)
   const theme = useTheme()
   const { register, handleSubmit, control } = useForm()
 
@@ -49,6 +46,27 @@ const Component: React.FC = () => {
 
   const lastPanel = useMemo(() => formData.panelIndex === 2, [formData.panelIndex])
 
+  const setWhereDidYouWork = useCallback(
+    (whereDidYouWork: string[]) => {
+      dispatch(CandidateActions.setFormData({ ...formData, whereDidYouWork }))
+    },
+    [formData]
+  )
+
+  const setKnowledge = useCallback(
+    (knowledge) => {
+      dispatch(CandidateActions.setFormData({ ...formData, knowledge }))
+    },
+    [formData]
+  )
+
+  const setPanelIndex = useCallback(
+    (panelIndex) => {
+      dispatch(CandidateActions.setFormData({ ...formData, panelIndex }))
+    },
+    [formData]
+  )
+
   const handleChange = useCallback(
     (event: React.ChangeEvent<{}>, panelIndexChanged: number) => {
       setPanelIndex(panelIndexChanged)
@@ -59,22 +77,16 @@ const Component: React.FC = () => {
   )
 
   const handleBack = useCallback(() => {
-    setPanelIndex(panelIndex - 1)
-  }, [formData, panelIndex])
-
-  const handleNext = useCallback(() => {
-    setPanelIndex(panelIndex + 1)
-  }, [formData, panelIndex])
+    setPanelIndex(formData.panelIndex - 1)
+  }, [formData])
 
   const onSubmit = useCallback(
     (values: DataProps) => {
       const canMoveForward = !lastPanel
 
-      dispatch(CandidateActions.setFormData({ ...formData, ...values, knowledgeList, whereDidYouWorkList }))
+      const panelIndex = canMoveForward ? formData.panelIndex + 1 : formData.panelIndex
 
-      if (canMoveForward) {
-        handleNext()
-      }
+      dispatch(CandidateActions.setFormData({ ...formData, ...values, panelIndex }))
     },
     [lastPanel, formData]
   )
@@ -97,10 +109,6 @@ const Component: React.FC = () => {
   )
 
   const handleLinkedinFailure = useCallback(() => setLinkedinAuthorizationToken(''), [])
-
-  useEffect(() => {
-    dispatch(CandidateActions.setFormData({ ...formData, panelIndex }))
-  }, [panelIndex])
 
   useEffect(() => {
     updateLinkedinUserDataOnForm(formData)
@@ -173,26 +181,26 @@ const Component: React.FC = () => {
           <TabPanel className="main__tab-panel" value={formData.panelIndex} index={1} dir={theme.direction}>
             <Card className="main__card">
               <AddInformationFields
-                defaultValues={formData.whereDidYouWork}
-                list={whereDidYouWorkList}
-                setList={setWhereDidYouWorkList}
+                list={formData.whereDidYouWork}
                 name="whereDidYouWork"
                 text="Onde já trabalhou?"
-                formControlClass="main__form-control"
+                control={control}
+                setList={setWhereDidYouWork}
                 register={register}
+                formControlClass="main__form-control"
               />
             </Card>
           </TabPanel>
           <TabPanel className="main__tab-panel" value={formData.panelIndex} index={2} dir={theme.direction}>
             <Card className="main__card">
               <AddInformationFields
-                defaultValues={formData.knowledge}
-                list={knowledgeList}
-                setList={setKnowledgeList}
+                list={formData.knowledge}
                 name="knowledge"
                 text="Conhecimentos"
-                formControlClass="main__form-control"
+                control={control}
+                setList={setKnowledge}
                 register={register}
+                formControlClass="main__form-control"
               />
             </Card>
           </TabPanel>
@@ -201,7 +209,7 @@ const Component: React.FC = () => {
               Anterior
             </Button>
             <Button className="main__button" type="submit" variant="contained" color="primary">
-              {lastPanel ? 'Enviar' : 'Próximo'}
+              {formData.panelIndex === 2 ? 'Enviar' : 'Próximo'}
             </Button>
           </div>
         </form>

@@ -15,12 +15,14 @@
     "tslint": "tslint --exclude 'node_modules/**' '**/*.{ts,tsx}'",
     "lint": "yarn eslint ; yarn stylelint ; yarn tslint",
     "fix-styles": "stylelint --quiet 'src/**/*.{css,scss,tsx}' --fix",
+    "lint-staged": "lint-staged",
     "postinstall": "husky install"
   },
   "dependencies": {
     "@material-ui/core": "4.11.3",
     "@material-ui/icons": "4.11.2",
     "axios": "0.21.1",
+    "dotenv": "8.2.0",
     "fontfaceobserver": "2.1.0",
     "immer": "8.0.1",
     "next": "10.0.7",
