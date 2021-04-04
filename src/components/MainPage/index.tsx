@@ -10,7 +10,10 @@ import TabPanel from '~/components/TabPanel'
 import { LINKEDIN_IS_SHOW_VARIATION, OPTIMIZE_EXPERIMENTS } from '~/constants/experiments'
 import { Main } from '~/styles/pages/main'
 import useA11y from './useA11y'
-import useMainPage from './useMainPage'
+import useDataPage from './useDataPage'
+import useFormRules from './useFormRules'
+import useLinkedinRules from './useLinkedinRules'
+import usePageRules from './usePageRules'
 
 const LinkedIn = dynamic<any>(() => import('react-linkedin-login-oauth2'), { ssr: false })
 
@@ -18,18 +21,24 @@ const MainPage: FC = () => {
   const {
     theme,
     firstPanel,
+    lastPanel,
     formData,
+    obtainedUserDataFromLinkedin,
     control,
     register,
     handleSubmit,
-    setWhereDidYouWork,
-    setKnowledge,
-    handleChange,
-    handleBack,
-    onSubmit,
-    handleLinkedinSuccess,
-    handleLinkedinFailure,
-  } = useMainPage()
+    setLinkedinAuthorizationToken,
+  } = useDataPage()
+  const { handleLinkedinSuccess, handleLinkedinFailure } = useLinkedinRules({
+    formData,
+    control,
+    obtainedUserDataFromLinkedin,
+    setLinkedinAuthorizationToken,
+  })
+  const { handleChange, handleBack } = usePageRules({
+    formData,
+  })
+  const { setWhereDidYouWork, setKnowledge, onSubmit } = useFormRules({ lastPanel, formData })
   const { a11yProps } = useA11y()
 
   return (
