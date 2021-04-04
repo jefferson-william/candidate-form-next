@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import MainPage from '~/components/MainPage'
+import MainPage from '~/module/Candidate/components/pages/Main'
 
 const Page: FC = (props) => <MainPage {...props} />
 

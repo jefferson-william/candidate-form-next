@@ -1,19 +1,19 @@
-import { populateWhereDidYouWorkForm } from '~/__stubs__/components/AddInformationFieldsStub/actions'
+import { populateWhereDidYouWorkForm } from '~/__stubs__/module/Candidate/molecules/AddInformationFieldsStub/actions'
 import {
   findByWhereDidYouWorkInput,
   getAllWhereDidYouWorkInput,
-} from '~/__stubs__/components/AddInformationFieldsStub/selectors'
+} from '~/__stubs__/module/Candidate/molecules/AddInformationFieldsStub/selectors'
 import {
   clickNextButton,
   clickSendButton,
   populateBasicDataForm,
   populateKnowledgeForm,
-} from '~/__stubs__/pages/main/actions'
-import { findByKnowledgeInput } from '~/__stubs__/pages/main/selectors'
-import { render, act, MyRenderResult, waitForElementToBeRemoved } from '~/__stubs__/utils/test-utils'
+} from '~/__stubs__/module/Candidate/pages/Main/actions'
+import { findByKnowledgeInput } from '~/__stubs__/module/Candidate/pages/Main/selectors'
+import { render, act, MyRenderResult, waitForElementToBeRemoved } from '~/__stubs__/shared/utils/test-utils'
+import { MyRenderedOptions } from '~/__stubs__/shared/utils/test-utils/index.d'
 import Main from '~/pages/main'
 import '~/__mocks__/nextRouter'
-import { MyRenderedOptions } from '~/types/__stubs__/test-utils'
 
 describe('pages/main', () => {
   let wrapper: MyRenderResult

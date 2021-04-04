@@ -1,10 +1,10 @@
-import AddInformationFieldsStub from '~/__stubs__/components/AddInformationFieldsStub'
+import AddInformationFieldsStub from '~/__stubs__/module/Candidate/molecules/AddInformationFieldsStub'
 import {
   populateWhereDidYouWorkForm,
   testAddAndRemoveFieldsOfWhereDidYouWorkForm,
-} from '~/__stubs__/components/AddInformationFieldsStub/actions'
-import { render, act, MyRenderResult } from '~/__stubs__/utils/test-utils'
-import getFormData from '~/utils/form/get-form-data'
+} from '~/__stubs__/module/Candidate/molecules/AddInformationFieldsStub/actions'
+import { render, act, MyRenderResult } from '~/__stubs__/shared/utils/test-utils'
+import getFormData from '~/shared/utils/form/get-form-data'
 
 describe('components/AddInformationFields', () => {
   let wrapper: MyRenderResult
