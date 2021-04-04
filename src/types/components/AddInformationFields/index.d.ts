@@ -1,4 +1,4 @@
-import { FieldValues } from 'react-hook-form'
+import { Control, FieldValues } from 'react-hook-form'
 import { DataProps } from '~/types/data'
 
 export interface AddInformationFieldsProps {

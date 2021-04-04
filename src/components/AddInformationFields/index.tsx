@@ -1,7 +1,8 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { FormControl, IconButton, Input, InputAdornment, InputLabel } from '@material-ui/core'
 import { Add, Close } from '@material-ui/icons'
 import { AddInformationFieldsProps } from '~/types/components/AddInformationFields'
+import useComponentRules from './useComponentRules'
 
 const AddInformationFields: React.FC<AddInformationFieldsProps> = ({
   list,
@@ -12,23 +13,7 @@ const AddInformationFields: React.FC<AddInformationFieldsProps> = ({
   register,
   formControlClass,
 }) => {
-  const handleAdd = useCallback(() => setList([...list, '']), [list])
-
-  const handleRemove = useCallback(
-    (index: number) => {
-      const formData = control.getValues()
-      const listFiltered: string[] = formData[name].filter((_: any, _index: number) => _index !== index)
-
-      if (!listFiltered.length) {
-        listFiltered.push('')
-      }
-
-      listFiltered.forEach((value, i) => control.setValue(`${name}[${i}]`, value))
-
-      setList(listFiltered)
-    },
-    [list, name]
-  )
+  const { handleAdd, handleRemove } = useComponentRules({ name, list, control, setList })
 
   return (
     <>
