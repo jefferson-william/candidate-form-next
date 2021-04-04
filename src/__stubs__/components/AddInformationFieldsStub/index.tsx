@@ -1,10 +1,7 @@
 import { FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import AddInformationFields from '~/components/AddInformationFields'
-
-interface AddInformationFieldsStubProps {
-  list: string[]
-}
+import { AddInformationFieldsStubProps } from '~/types/__stubs__/components/AddInformationFieldsStub'
 
 const AddInformationFieldsStub: FC<AddInformationFieldsStubProps> = ({ list }) => {
   const [values, setList] = useState<string[]>(list)

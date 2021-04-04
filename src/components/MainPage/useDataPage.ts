@@ -2,13 +2,8 @@ import { useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 import { useTheme } from '@material-ui/core/styles'
-import { DataProps } from '~/types/data'
+import { CandidateSelectorProps } from '~/types/components/MainPage/useDataPage.d'
 import States from '~/types/store/rootStates'
-
-interface CandidateSelectorProps {
-  formData: DataProps
-  obtainedUserDataFromLinkedin: boolean
-}
 
 const useDataPage = () => {
   const theme = useTheme()

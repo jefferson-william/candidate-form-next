@@ -1,12 +1,5 @@
 import { useCallback } from 'react'
-import { Control, FieldValues } from 'react-hook-form'
-
-interface UseComponentRulesProps {
-  name: string
-  list: string[]
-  control: Control<FieldValues>
-  setList(list: string[]): void
-}
+import { UseComponentRulesProps } from '~/types/components/AddInformationFields/useComponentRules.d'
 
 const useComponentRules = ({ name, list, control, setList }: UseComponentRulesProps) => {
   const handleAdd = useCallback(() => setList([...list, '']), [list])

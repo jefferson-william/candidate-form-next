@@ -1,11 +1,7 @@
 import React, { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 import * as CandidateActions from '~/store/Candidate/actions'
-import { DataProps } from '~/types/data'
-
-interface UsePageRulesProps {
-  formData: DataProps
-}
+import { UsePageRulesProps } from '~/types/components/MainPage/usePageRules.d'
 
 const usePageRules = ({ formData }: UsePageRulesProps) => {
   const dispatch = useDispatch()

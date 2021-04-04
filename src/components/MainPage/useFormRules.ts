@@ -1,12 +1,8 @@
 import { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 import * as CandidateActions from '~/store/Candidate/actions'
+import { UseFormRulesProps } from '~/types/components/MainPage/useFormRules.d'
 import { DataProps } from '~/types/data'
-
-interface UseFormRulesProps {
-  lastPanel: boolean
-  formData: DataProps
-}
 
 const useFormRules = ({ lastPanel, formData }: UseFormRulesProps) => {
   const dispatch = useDispatch()
