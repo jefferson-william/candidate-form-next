@@ -1,4 +1,4 @@
-## Next Boilerplate
+# Sobre
 
 - [Instalação](#instalação)
 - [Rodar o projeto](#rodar-o-projeto)
@@ -10,6 +10,14 @@
 - [Light House](#light-house)
 - [Boilerplate](#boilerplate)
 - [Referências](#referências)
+
+Projeto iniciado para uma vaga e posteriormente usado para estudos. Compare a [master](https://github1s.com/jefferson-william/candidate-form-next) com a [refactor](https://github1s.com/jefferson-william/candidate-form-next/tree/refactor) para ver os benefícios.
+
+Os estudos estão aplicados neste [PR #15](https://github.com/jefferson-william/candidate-form-next/pull/15) que contempla:
+
+- Melhoras práticas para escrita e organização dos testes;
+- Aplicado lógicas e regras de forma centralizada com Hooks;
+- Estrutura de pastas modular e Atomic Design visando escalabilidade.
 
 ### Instalação
 
