@@ -2,7 +2,7 @@ import { produce } from 'immer'
 import { Reducer } from 'redux'
 import { INITIAL_STATE } from '~/module/Candidate/store/state'
 import TYPES from '~/module/Candidate/store/types'
-import Action from '~/shared/types/lib/typesafe-actions'
+import Action from '~/shared/lib/typesafe-actions'
 import State from './state.d'
 
 const reducer: Reducer<State, Action<State>> = (state = INITIAL_STATE, action) => {

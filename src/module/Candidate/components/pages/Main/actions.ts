@@ -1,5 +1,5 @@
-import { getAllKnowledgeInput } from '~/__stubs__/module/Candidate/pages/Main/selectors'
-import { MyRenderResult, screen, userEvent } from '~/__stubs__/shared/utils/test-utils'
+import { getAllKnowledgeInput } from '~/module/Candidate/components/pages/Main/selectors'
+import { MyRenderResult, screen, userEvent } from '~/shared/utils/test-utils'
 
 export function clickNextButton() {
   userEvent.click(screen.getByRole('button', { name: 'Próximo' }))

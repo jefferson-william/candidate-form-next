@@ -2,7 +2,7 @@ import { Provider } from 'react-redux'
 import { RouterContext } from 'next-server/dist/lib/router-context'
 import { ThemeProvider } from 'styled-components'
 import { Store } from 'redux'
-import { MyRenderOptions } from '~/__stubs__/shared/utils/test-utils/index.d'
+import { MyRenderOptions } from '~/shared/utils/test-utils/index.d'
 
 const Providers = (myStore: Store<any, any>, allOptions: MyRenderOptions) => ({ children }: any) => (
   <RouterContext.Provider value={allOptions.router as any}>

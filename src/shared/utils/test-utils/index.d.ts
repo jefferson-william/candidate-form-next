@@ -2,7 +2,7 @@ import { Queries, RenderResult } from '@testing-library/react'
 import { Theme } from '@material-ui/core'
 import { Router } from 'next/router'
 import States from '~/types/store/rootStates'
-import customQueries, { MyQueries } from '~/__stubs__/utils/test-utils/custom-queries'
+import customQueries, { MyQueries } from '~/shared/utils/test-utils/custom-queries'
 
 export interface MyRenderOptions {
   router?: Partial<Router>

@@ -1,6 +1,6 @@
 import { action } from 'typesafe-actions'
 import TYPES from '~/module/Candidate/store/types'
-import { DataProps } from '~/shared/types/data'
+import { DataProps } from '~/shared/data'
 
 export const setFormData = (formData: DataProps) => action<string, object>(TYPES.SET_FORM_DATA, { formData })
 

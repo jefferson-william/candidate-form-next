@@ -1,18 +1,18 @@
-import { populateWhereDidYouWorkForm } from '~/__stubs__/module/Candidate/molecules/AddInformationFieldsStub/actions'
+import { populateWhereDidYouWorkForm } from '~/module/Candidate/components/molecules/AddInformationFields/actions'
 import {
   findByWhereDidYouWorkInput,
   getAllWhereDidYouWorkInput,
-} from '~/__stubs__/module/Candidate/molecules/AddInformationFieldsStub/selectors'
+} from '~/module/Candidate/components/molecules/AddInformationFields/selectors'
+import Main from '~/module/Candidate/components/pages/Main'
 import {
   clickNextButton,
   clickSendButton,
   populateBasicDataForm,
   populateKnowledgeForm,
-} from '~/__stubs__/module/Candidate/pages/Main/actions'
-import { findByKnowledgeInput } from '~/__stubs__/module/Candidate/pages/Main/selectors'
-import { render, act, MyRenderResult, waitForElementToBeRemoved } from '~/__stubs__/shared/utils/test-utils'
-import { MyRenderedOptions } from '~/__stubs__/shared/utils/test-utils/index.d'
-import Main from '~/pages/main'
+} from '~/module/Candidate/components/pages/Main/actions'
+import { findByKnowledgeInput } from '~/module/Candidate/components/pages/Main/selectors'
+import { render, act, MyRenderResult, waitForElementToBeRemoved } from '~/shared/utils/test-utils'
+import { MyRenderedOptions } from '~/shared/utils/test-utils/index.d'
 import '~/__mocks__/nextRouter'
 
 describe('pages/main', () => {
