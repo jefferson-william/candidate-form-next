@@ -1,2 +1,2 @@
 /// <reference types="react-scripts" />
-/// <reference types="./src/types/extend-expect.d.ts" />
+/// <reference types="./src/shared/extend-expect.d.ts" />
