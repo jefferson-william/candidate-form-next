@@ -5,9 +5,9 @@ import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { ThemeProvider } from '@material-ui/core/styles'
 import { PersistGate } from 'redux-persist/integration/react'
-import wrapperStore from '~/store'
-import theme from '~/styles/theme'
-import LoadFont from '~/utils/font-load'
+import wrapperStore from '~/shared/store'
+import theme from '~/shared/styles/theme'
+import LoadFont from '~/shared/utils/fonts/font-load'
 
 const MyApp: FC<AppProps> = ({ Component, pageProps, router }) => {
   const store: any = useStore()
