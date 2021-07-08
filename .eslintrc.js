@@ -53,7 +53,7 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.jsx', '.js', '.ts', '.tsx'] }],
     'react/jsx-props-no-spreading': 'off',
     'react/prop-types': 'off',
-    'react/no-array-index-key': 'warn',
+    'react/no-array-index-key': 'off',
     'react-hooks/rules-of-hooks': 'error',
     'react/react-in-jsx-scope': 'off',
     'prettier/prettier': 'error',
@@ -84,7 +84,7 @@ module.exports = {
     'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
     'import/resolver': {
       typescript: {
-        directory: './tsconfig.json',
+        project: './tsconfig.json',
       },
     },
   },

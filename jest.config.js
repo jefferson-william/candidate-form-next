@@ -8,7 +8,7 @@ module.exports = {
     '^~/(.*)$': '<rootDir>/src/$1',
   },
   moduleDirectories: ['node_modules', 'src'],
-  testRegex: '(/__tests__/.*\\\\.spec.(tsx|ts))?$',
+  testRegex: '(.*\\\\.spec.(tsx|ts))?$',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
   transformIgnorePatterns: ['<rootDir>/node_modules/'],
